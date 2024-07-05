@@ -14,7 +14,7 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^core\\/VERSION$"],
+      "fileMatch": ["core/VERSION"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/core",
       "datasourceTemplate": "github-releases",
@@ -22,7 +22,7 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^operating-system\\/VERSION$"],
+      "fileMatch": ["operating-system/VERSION"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/operating-system",
       "datasourceTemplate": "github-releases",
