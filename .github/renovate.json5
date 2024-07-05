@@ -22,14 +22,6 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^supervisor\\/VERSION$"],
-      "matchStrings": ["^(?<currentValue>.+)$"],
-      "depNameTemplate": "home-assistant/supervisor",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "(?<version>.*)"
-    },
-    {
-      "customType": "regex",
       "fileMatch": ["^operating-system\\/VERSION$"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/operating-system",
