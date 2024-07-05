@@ -43,7 +43,7 @@ jobs:
 
     - name: Read version from file
       id: read_version
-      run: echo "::set-output name=VERSION::$(cat os-version)"
+      run: echo "VERSION=$(cat os-version)" >> $GITHUB_OUTPUT
 
     - name: SSH and update OS
       run: |
