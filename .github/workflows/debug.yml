@@ -44,7 +44,7 @@ jobs:
 
     - name: Read version from file
       id: read_version
-      run: echo "VERSION=$(cat core/VERSION)" >> $GITHUB_OUTPUT
+      run: echo "VERSION=$(cat core-version)" >> $GITHUB_OUTPUT
 
     - name: SSH and update core
       run: |
