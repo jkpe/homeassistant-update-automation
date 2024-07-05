@@ -43,7 +43,7 @@ jobs:
 
     - name: Read version from file
       id: read_version
-      run: echo "::set-output name=VERSION::$(cat operating-system/VERSION)"
+      run: echo "::set-output name=VERSION::$(cat os-version)"
 
     - name: SSH and update OS
       run: |
