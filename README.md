@@ -1,6 +1,6 @@
 # Home Assistant
 
-This repository contains workflows for deploying various components of the [Home Assistant](https://www.home-assistant.io/) project using GitHub Actions and Renovate to my [Home Assistant Yellow](https://www.home-assistant.io/yellow/).
+This repository contains workflows for deploying and updating various components of the [Home Assistant](https://www.home-assistant.io/) project using [GitHub Actions](https://docs.github.com/en/actions), [Renovate](https://github.com/apps/renovate), [Tailscale](https://tailscale.com/) and `ha` [cli](https://github.com/home-assistant/cli) to my [Home Assistant Yellow](https://www.home-assistant.io/yellow/).
 
 ## Table of Contents
 
