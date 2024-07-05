@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^(workflow-templates|\.(?:github|gitea|forgejo)/workflows)/[^/]+\.ya?ml$"],
+      "matchStrings": ["uses: jkpe\\/tailscale-github-action@v2.0.0(?:\\s+.*\\n)*?.*version: (?<currentValue>.*?)\\n"],
+      "depNameTemplate": "tailscale/tailscale",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "v(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^core\\/VERSION$"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "home-assistant/core",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^supervisor\\/VERSION$"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "home-assistant/supervisor",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^operating-system\\/VERSION$"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "home-assistant/operating-system",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    }
+  ]
+}
