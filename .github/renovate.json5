@@ -17,7 +17,7 @@
       "fileMatch": ["core/VERSION"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/core",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "extractVersionTemplate": "(?<version>.*)"
     },
     {
