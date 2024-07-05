@@ -4,12 +4,11 @@ on:
     branches:
       - main
     paths:
-      - core-version
+      - debug
 
 jobs:
-
   debug:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
     - name: tailscale
@@ -44,7 +43,7 @@ jobs:
 
     - name: Read version from file
       id: read_version
-      run: echo "VERSION=$(cat core-version)" >> $GITHUB_OUTPUT
+      run: echo "VERSION=$(cat debug)" >> $GITHUB_OUTPUT
 
     - name: SSH and update core
       run: |
