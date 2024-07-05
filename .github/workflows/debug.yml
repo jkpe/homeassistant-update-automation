@@ -47,5 +47,6 @@ jobs:
 
     - name: SSH and update core
       run: |
+        SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha info --api-token ${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}"
+        ssh yellow "ha host info --api-token $SUPERVISOR_TOKEN"
