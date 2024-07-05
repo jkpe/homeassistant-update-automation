@@ -14,15 +14,15 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["core/VERSION"],
+      "fileMatch": ["core-version"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/core",
-      "datasourceTemplate": "github-tags",
+      "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "(?<version>.*)"
     },
     {
       "customType": "regex",
-      "fileMatch": ["operating-system/VERSION"],
+      "fileMatch": ["os-version"],
       "matchStrings": ["^(?<currentValue>.+)$"],
       "depNameTemplate": "home-assistant/operating-system",
       "datasourceTemplate": "github-releases",
