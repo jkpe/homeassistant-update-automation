@@ -27,6 +27,14 @@
       "depNameTemplate": "home-assistant/operating-system",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-cloudflared"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "brenner-tobias/addon-cloudflared",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
     }
   ]
 }
