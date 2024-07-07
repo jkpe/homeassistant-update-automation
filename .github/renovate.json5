@@ -35,6 +35,54 @@
       "depNameTemplate": "brenner-tobias/addon-cloudflared",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-ssh"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "hassio-addons/addon-ssh",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-esphome"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "esphome/esphome",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-go2rtc"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "AlexxIT/go2rtc",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-googedrivebackup"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "sabeechen/hassio-google-drive-backup",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "v(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-scrypted"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "koush/scrypted",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "v(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-zigbee2mqtt"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "Koenkk/zigbee2mqtt",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "(?<version>.*)"
     }
   ]
 }

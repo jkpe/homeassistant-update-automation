@@ -1,10 +1,10 @@
-name: addon-cloudflared
+name: addon-esphome
 on:
   push:
     branches:
       - main
     paths:
-      - addon-cloudflared
+      - addon-esphome
 
 jobs:
   update-addon:
@@ -45,4 +45,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update 9074a9fa_cloudflared --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update 5c53de3b_esphome --api-token $SUPERVISOR_TOKEN"
