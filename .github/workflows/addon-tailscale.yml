@@ -1,0 +1,48 @@
+name: addon-tailscale
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - addon-tailscale
+
+jobs:
+  update-addon:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+    - name: tailscale
+      uses: jkpe/tailscale-github-action@v2.0.0
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:ci
+        version: 1.68.2
+
+    - name: Write SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.HASSIOKEY }}" > ~/.ssh/hassio
+        chmod 600 ~/.ssh/hassio
+
+    - name: Write known_hosts
+      run: |
+        echo "${{ secrets.HASSIO_PUB_KEY_SSH_RSA }}" >> ~/.ssh/known_hosts
+        echo "${{ secrets.HASSIO_PUB_KEY_ED25519 }}" >> ~/.ssh/known_hosts
+
+    - name: Add SSH config for Home Assistant Yellow
+      run: |
+        echo -e "Host yellow\n  HostName ${{ secrets.YELLOW_IP_ADDRESS }}\n  Port 2200\n  User hassio\n  IdentityFile ~/.ssh/hassio" >> ~/.ssh/config
+
+    - name: Extract SUPERVISOR_TOKEN
+      id: extract_token
+      run: |
+        SUPERVISOR_TOKEN=$(ssh yellow 'cat /etc/profile.d/homeassistant.sh | grep SUPERVISOR_TOKEN | cut -d "=" -f 2')
+        echo "::add-mask::$SUPERVISOR_TOKEN"
+        echo "SUPERVISOR_TOKEN=$SUPERVISOR_TOKEN" >> $GITHUB_OUTPUT
+
+    - name: SSH and update addon
+      run: |
+        SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
+        VERSION=${{ steps.read_version.outputs.VERSION }}
+        ssh yellow "ha addons update a0d7b954_tailscale --api-token $SUPERVISOR_TOKEN"
