@@ -83,6 +83,14 @@
       "depNameTemplate": "Koenkk/zigbee2mqtt",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-tailscale"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "hassio-addons/addon-tailscale",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "v(?<version>.*)"
     }
   ]
 }
