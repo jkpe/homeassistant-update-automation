@@ -41,5 +41,5 @@ The workflows rely on several secrets for authentication and secure operations:
 - `TS_OAUTH_CLIENT_ID`: OAuth client ID for Tailscale.
 - `TS_OAUTH_SECRET`: OAuth secret for Tailscale.
 - `HASSIOKEY`: SSH key for accessing the Home Assistant instance.
-- `YELLOW_IP_ADDRESS` IP address of the Home Assistant instance.
+- `YELLOW_TS_HOSTNAME` IP address of the Home Assistant instance.
 
