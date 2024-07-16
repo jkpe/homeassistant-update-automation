@@ -91,6 +91,14 @@
       "depNameTemplate": "hassio-addons/addon-tailscale",
       "datasourceTemplate": "github-releases",
       "extractVersionTemplate": "v(?<version>.*)"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["addon-matter"],
+      "matchStrings": ["^(?<currentValue>.+)$"],
+      "depNameTemplate": "ghcr.io/home-assistant-libs/python-matter-server",
+      "datasourceTemplate": "docker",
+      "extractVersionTemplate": "(?<version>.*)"
     }
   ]
 }
