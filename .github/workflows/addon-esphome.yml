@@ -44,4 +44,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update 5c53de3b_esphome --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update 5c53de3b_esphome --no-progress --api-token $SUPERVISOR_TOKEN"
