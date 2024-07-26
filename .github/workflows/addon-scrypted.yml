@@ -1,7 +1,10 @@
 name: addon-scrypted
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - addon-scrypted
 
 jobs:
   update-addon:
@@ -41,4 +44,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update 09e60fb6_scrypted --no-progress --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update 09e60fb6_scrypted --api-token $SUPERVISOR_TOKEN"

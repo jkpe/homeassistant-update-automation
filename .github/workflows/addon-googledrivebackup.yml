@@ -1,7 +1,10 @@
 name: addon-googledrivebackup
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - addon-googledrivebackup
 
 jobs:
   update-addon:
@@ -41,4 +44,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update cebe7a76_hassio_google_drive_backup --no-progress --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update cebe7a76_hassio_google_drive_backup --api-token $SUPERVISOR_TOKEN"

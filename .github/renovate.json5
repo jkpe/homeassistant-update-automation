@@ -100,16 +100,5 @@
       "datasourceTemplate": "docker",
       "extractVersionTemplate": "(?<version>.*)"
     }
-  ],
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
-    }
-  ],
-  "platformAutomerge": true
+  ]
 }

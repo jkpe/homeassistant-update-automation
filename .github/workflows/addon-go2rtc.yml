@@ -1,7 +1,10 @@
 name: addon-go2rtc
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - addon-go2rtc
 
 jobs:
   update-addon:
@@ -41,4 +44,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update a889bffc_go2rtc --no-progress --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update a889bffc_go2rtc --api-token $SUPERVISOR_TOKEN"

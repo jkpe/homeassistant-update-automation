@@ -1,7 +1,10 @@
 name: addon-zigbee2mqtt
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - addon-zigbee2mqtt
 
 jobs:
   update-addon:
@@ -41,4 +44,4 @@ jobs:
       run: |
         SUPERVISOR_TOKEN=${{ steps.extract_token.outputs.SUPERVISOR_TOKEN }}
         VERSION=${{ steps.read_version.outputs.VERSION }}
-        ssh yellow "ha addons update 45df7312_zigbee2mqtt --no-progress --api-token $SUPERVISOR_TOKEN"
+        ssh yellow "ha addons update 45df7312_zigbee2mqtt --api-token $SUPERVISOR_TOKEN"
