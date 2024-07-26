@@ -38,7 +38,7 @@ jobs:
     needs: wait-for-approval
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up GitHub CLI
         uses: cli/gh-action@v2
