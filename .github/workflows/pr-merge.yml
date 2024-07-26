@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Request manual approval
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: approve
         with:
           script: |
@@ -33,7 +33,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Wait for approval
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: wait-approval
         with:
           script: |
@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Merge all open pull requests
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { context, github } = require('@actions/github');
