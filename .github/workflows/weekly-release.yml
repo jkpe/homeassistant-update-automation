@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-
-      - name: Set up GitHub CLI
-        uses: cli/gh-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -23,6 +20,8 @@ jobs:
 
       - name: Create the release
         run: gh release create "${{ env.current_date }}" --title "${{ env.current_date }}" --draft
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   wait-for-approval:
     runs-on: ubuntu-latest
@@ -39,9 +38,6 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-
-      - name: Set up GitHub CLI
-        uses: cli/gh-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -51,3 +47,5 @@ jobs:
 
       - name: Publish the release
         run: gh release edit "${{ env.current_date }}" --draft=false
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
