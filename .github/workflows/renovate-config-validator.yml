@@ -1,10 +1,7 @@
 name: renovate-config-validator
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/renovate.json5
+  release:
+    types: [published]
 jobs:
   validate:
     runs-on: ubuntu-latest
