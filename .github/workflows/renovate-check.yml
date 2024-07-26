@@ -1,10 +1,9 @@
-name: Renovate Auto-Merge Check
+name: renovate-check
 
 on:
-  pull_request:
-    branches:
-      - 'renovate/**'
-    types: [opened, synchronize, reopened]
+  push:
+    branches-ignore:
+      - 'main'
 
 jobs:
   check:
