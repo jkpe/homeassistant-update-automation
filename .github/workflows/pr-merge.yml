@@ -14,13 +14,13 @@ jobs:
         id: approve
         with:
           script: |
-            const { github, context } = require('@actions/github');
+            const { github: gh, context } = require('@actions/github');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const runId = context.runId;
 
             // Create a new issue for approval
-            const { data: issue } = await github.issues.create({
+            const { data: issue } = await gh.issues.create({
               owner,
               repo,
               title: `Approval needed for Merge PRs`,
@@ -37,14 +37,14 @@ jobs:
         id: wait-approval
         with:
           script: |
-            const { github, context } = require('@actions/github');
+            const { github: gh, context } = require('@actions/github');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const issue_number = parseInt('${{ steps.approve.outputs.result }}', 10);
 
             let approved = false;
             while (!approved) {
-              const { data: issue } = await github.issues.get({
+              const { data: issue } = await gh.issues.get({
                 owner,
                 repo,
                 issue_number
@@ -69,18 +69,18 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { github, context } = require('@actions/github');
+            const { github: gh, context } = require('@actions/github');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            const { data: pullRequests } = await github.pulls.list({
+            const { data: pullRequests } = await gh.pulls.list({
               owner,
               repo,
               state: 'open'
             });
 
             for (const pr of pullRequests) {
-              await github.pulls.merge({
+              await gh.pulls.merge({
                 owner,
                 repo,
                 pull_number: pr.number,
