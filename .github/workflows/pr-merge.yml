@@ -14,17 +14,17 @@ jobs:
         id: approve
         with:
           script: |
-            const { context, github } = require('@actions/github');
+            const { github, context } = require('@actions/github');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const issue_number = context.runId;
+            const runId = context.runId;
 
             // Create a new issue for approval
             const { data: issue } = await github.issues.create({
               owner,
               repo,
               title: `Approval needed for Merge PRs`,
-              body: `Please approve this workflow run: [Approval Link](https://github.com/${owner}/${repo}/actions/runs/${issue_number})`
+              body: `Please approve this workflow run: [Approval Link](https://github.com/${owner}/${repo}/actions/runs/${runId})`
             });
 
             return issue.number;
@@ -37,14 +37,16 @@ jobs:
         id: wait-approval
         with:
           script: |
-            const { github } = require('@actions/github');
+            const { github, context } = require('@actions/github');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
             const issue_number = parseInt('${{ steps.approve.outputs.result }}', 10);
 
             let approved = false;
             while (!approved) {
               const { data: issue } = await github.issues.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
+                owner,
+                repo,
                 issue_number
               });
 
@@ -67,7 +69,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { context, github } = require('@actions/github');
+            const { github, context } = require('@actions/github');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
