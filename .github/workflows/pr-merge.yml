@@ -61,7 +61,7 @@ jobs:
     needs: request-approval
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Merge all open pull requests
         uses: actions/github-script@v6
